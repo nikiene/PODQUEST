@@ -39,6 +39,6 @@ EP-1 | Estrutura de Dados - 3° Semestre -  Bacharelado em Ciência da Computaç
 
  * shuffle   : ativa/desativa a opção de shuffle e avisa o usuário
 
- * proximo   : imprime o próximo episódio na lista. Se a opção shuffle estiver ativada, deve ser um episódio aleatório, diferente da ordem que foram inseridos
+ * próximo   : imprime o próximo episódio na lista. Se a opção shuffle estiver ativada, deve ser um episódio aleatório, diferente da ordem que foram inseridos
 
  * relatório :  o programa imprime quais são os podcasts que existem na playlist, algo como “2 podcasts na sua playlist! Veja abaixo quais sao:”, com a lista de nomes, um por linha
