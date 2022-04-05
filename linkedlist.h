@@ -3,14 +3,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-//Definição das palavras-chave, cada uma vai ter uma string e um apontamento para uma próxima, caso existir
+//DefiniÃ§Ã£o das palavras-chave, cada uma vai ter uma string e um apontamento para uma prÃ³xima, caso existir
 typedef struct palavrasChave
 {
 	char categoria[64];
 	struct palavrasChave* outraCategoria;
+	
 } PalavrasChave;
 
-//Definição do meu podcast, vai possuir um id, uma string nome(podcast), uma string nome(episódio) e um numero do episódio
+//DefiniÃ§Ã£o do meu podcast, vai possuir um id, uma string nome(podcast), uma string nome(episÃ³dio) e um numero do episÃ³dio
 //TODO: implementar as palavras-chave
 typedef struct podcast
 {
@@ -24,16 +25,17 @@ typedef struct podcast
 //Definindo que um ponteiro para um Podcast vai se chamar Podquest
 typedef Podcast* Podquest;
 
-//Definição da minha lista, possuindo 3 ponteiros: início, atual e fim
+//DefiniÃ§Ã£o da minha lista, possuindo 3 ponteiros: inÃ­cio, atual e fim
 typedef struct playlist
 {
 	Podquest inicio;
 	Podquest atual;
 	Podquest fim;
+	
 } Playlist;
 
 /**
-* @brief Função que aloca um espaço do tamanho de uma Playlist na memória
-* @return novaPlaylist, a nova Playlist com os apontamentos de memória para o início, fim e atual apontando para NULL
+* @brief FunÃ§Ã£o que aloca um espaÃ§o do tamanho de uma Playlist na memÃ³ria
+* @return novaPlaylist, a nova Playlist com os apontamentos de memÃ³ria para o inÃ­cio, fim e atual apontando para NULL
 */
 Playlist* llcriaPlaylist();
