@@ -28,7 +28,7 @@ typedef struct podcast
 	char nomeEpisodio[64];
 	int numeroEpisodio;
 
-	PalavrasChave palavrasChave;
+	PalavrasChave* palavrasChave;
 
 	struct podcast* proximo;
 	struct podcast* anterior;
@@ -57,16 +57,16 @@ Playlist* llcriaPlaylist();
 * @brief Função que aloca um espaço do tamanho de uma lista de PalavraChave na memória
 * @return novaPalavrasChave, a nova lista de PalavraChave com os apontamentos de memória para o início e fim apontando para NULL
 */
-PalavrasChave* criaPalavrasChave();
+PalavrasChave* llcriaPalavrasChave();
 
 /**
 * @brief Função que aloca um espaço do tamanho de uma PalavraChave na memória (dados dessa PalavraChave serão pedidos nessa função)
 * @return novaPalavrasChave, a nova PalavraChave com os apontamentos de memória para o próximo apontando para NULL
 */
-PalavraChave* criaPalavraChave();
+PalavraChave* llcriaPalavraChave();
 
 /**
 * @brief Função que aloca um espaço do tamanho de um Podquest na memória (dados desse Podquest serão pedidos nessa função)
 * @return novoPodquest, a nova Playlist com os apontamentos de memória para o próximo e anterior apontando para NULL
 */
-Podquest criaPodquest();
+Podquest llcriaPodquest();

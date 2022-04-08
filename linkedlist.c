@@ -31,7 +31,7 @@ Playlist* llcriaPlaylist() {
 * @brief Função que aloca um espaço do tamanho de uma lista de PalavraChave na memória 
 * @return novaPalavrasChave, a nova lista de PalavraChave com os apontamentos de memória para o início e fim apontando para NULL
 */
-PalavrasChave* criaPalavrasChave() {
+PalavrasChave* llcriaPalavrasChave() {
 
 	PalavrasChave* novaPalavrasChave = (PalavrasChave*)malloc(sizeof(PalavrasChave));
 
@@ -45,7 +45,7 @@ PalavrasChave* criaPalavrasChave() {
 * @brief Função que aloca um espaço do tamanho de uma PalavraChave na memória (dados dessa PalavraChave serão pedidos nessa função)
 * @return novaPalavrasChave, a nova PalavraChave com os apontamentos de memória para o próximo apontando para NULL
 */
-PalavraChave* criaPalavraChave() {
+PalavraChave* llcriaPalavraChave() {
 	
 	PalavraChave* novaPalavraChave = (PalavraChave*)malloc(sizeof(PalavraChave));
 
@@ -62,6 +62,40 @@ PalavraChave* criaPalavraChave() {
 * @brief Função que aloca um espaço do tamanho de um Podquest na memória (dados desse Podquest serão pedidos nessa função)
 * @return novoPodquest, a nova Playlist com os apontamentos de memória para o próximo e anterior apontando para NULL
 */
-Podquest criaPodquest() {
+Podquest llcriaPodquest() {
+
+	Podquest novoPodquest = (Podquest)malloc(sizeof(Podcast));
+
+	printf("\nId do Podcast: ");
+	scanf_s("%d", &novoPodquest->podcastId);
+	getchar();
+
+	printf("\nNome do Podcast: ");
+	fgets(novoPodquest->nomePodcast, 64, stdin);
+	remove_newline_ch(novoPodquest->nomePodcast);
+
+	printf("\nNome do Episodio: ");
+	fgets(novoPodquest->nomeEpisodio, 64, stdin);
+	remove_newline_ch(novoPodquest->nomeEpisodio);
+
+	printf("\nNumero do Episodio: ");
+	scanf_s("%d", &novoPodquest->numeroEpisodio);
+	getchar();
+
+
+	PalavrasChave* novaListaPalavrasChave = llcriaPalavrasChave();
+	novoPodquest->palavrasChave = novaListaPalavrasChave;
+
+	int continuar = 1;
+	while (continuar)
+	{
+		printf("\nDeseja inserir mais uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n");
+		scanf_s("%d", &continuar);
+
+		if (continuar)
+		{
+			//TODO: poder implementar palavras-chave na lista.
+		}
+	}
 
 }
