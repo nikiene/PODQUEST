@@ -83,3 +83,13 @@ void llInserePodquestOrdenado(Playlist* playlist);
 * @param playlist -> Lista de Podquest
 */
 void llInserePodquestFim(Playlist* playlist);
+
+/**
+* @brief Função que verifica se um Podquest existe na Playlist, e caso exista, o retorna
+* @param playlist -> Playlist na qual vai acontecer a busca
+* @param idBusca -> Id do Podquest que vai ser buscado
+* @param epsBusca -> Episodio do Podquest que vai ser buscado
+* @return aux -> O Podquest buscaso
+* @return NULL -> Caso o Podquest não exista na lista
+*/
+Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca);

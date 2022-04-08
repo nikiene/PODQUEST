@@ -185,3 +185,23 @@ void llInserePodquestFim(Playlist* playlist) {
 	playlist->fim = novoPodquest;
 }
 
+/**
+* @brief Função que verifica se um Podquest existe na Playlist, e caso exista, o retorna
+* @param playlist -> Playlist na qual vai acontecer a busca
+* @param idBusca -> Id do Podquest que vai ser buscado
+* @param epsBusca -> Episodio do Podquest que vai ser buscado
+* @return aux -> O Podquest buscaso
+* @return NULL -> Caso o Podquest não exista na lista
+*/
+Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca) {
+
+	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
+	{
+		if (aux->podcastId == idBusca && aux->numeroEpisodio == epsBusca) 
+		{
+			return aux;
+		}
+	}
+
+	return NULL;
+}
