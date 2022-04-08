@@ -54,8 +54,30 @@ PalavraChave* llcriaPalavraChave() {
 	remove_newline_ch(novaPalavraChave->categoria);
 
 	novaPalavraChave->proxima = NULL;
+	novaPalavraChave->anterior = NULL;
 
 	return novaPalavraChave;
+}
+
+/**
+* @brief adiciona uma palavra-chave no fim da lista de palavras-chave;
+* @param palavrasChave -> Lista de palavras-chave
+*/
+void adicionaPalavraChave(PalavrasChave* palavrasChave) {
+
+	PalavraChave* novaPalavraChave = llcriaPalavraChave();
+
+	if (palavrasChave->inicio == NULL)
+	{
+		palavrasChave->inicio = novaPalavraChave;
+		palavrasChave->fim = novaPalavraChave;
+
+		return;
+	}
+
+	palavrasChave->fim->proxima = novaPalavraChave;
+	novaPalavraChave->anterior = palavrasChave->fim;
+	palavrasChave->fim = novaPalavraChave;
 }
 
 /**
@@ -94,8 +116,11 @@ Podquest llcriaPodquest() {
 
 		if (continuar)
 		{
-			//TODO: poder implementar palavras-chave na lista.
+			adicionaPalavraChave(novaListaPalavrasChave);
 		}
 	}
+
+	novoPodquest->proximo = NULL;
+	novoPodquest->anterior = NULL;
 
 }

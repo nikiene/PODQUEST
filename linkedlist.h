@@ -9,6 +9,7 @@ typedef struct palavraChave
 {
 	char categoria[64];
 	struct palavraChave* proxima;
+	struct palavraChave* anterior;
 
 } PalavraChave;
 
