@@ -60,7 +60,7 @@ PalavraChave* llcriaPalavraChave() {
 }
 
 /**
-* @brief adiciona uma palavra-chave no fim da lista de palavras-chave;
+* @brief adiciona uma palavra-chave no fim da lista de palavras-chave
 * @param palavrasChave -> Lista de palavras-chave
 */
 void adicionaPalavraChave(PalavrasChave* palavrasChave) {
@@ -123,4 +123,43 @@ Podquest llcriaPodquest() {
 	novoPodquest->proximo = NULL;
 	novoPodquest->anterior = NULL;
 
+	return novoPodquest;
+}
+
+/**
+* @brief adiciona um Podquest na Playlist ordenado pelo ID
+* @param playlist -> Lista de Podquest
+*/
+void llInserePodquest(Playlist* playlist) {
+
+	Podquest novoPodquest = llcriaPodquest();
+	
+	if (playlist->inicio == NULL)
+	{
+		playlist->inicio = novoPodquest;
+		playlist->fim = novoPodquest;
+
+		return;
+	}
+	else if (novoPodquest->podcastId > playlist->fim->podcastId)
+	{
+		playlist->fim->proximo = novoPodquest;
+		novoPodquest->anterior = playlist->fim;
+		playlist->fim = novoPodquest;
+
+		return;
+	}
+	else
+	{
+		Podquest aux = playlist->inicio;
+
+		while (aux->proximo->podcastId <= novoPodquest->podcastId)
+		{
+			aux = aux->proximo;
+		}
+
+		novoPodquest->proximo = aux->proximo;
+		aux->proximo = novoPodquest;
+		novoPodquest->anterior = aux;
+	}
 }

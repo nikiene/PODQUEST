@@ -71,3 +71,9 @@ PalavraChave* llcriaPalavraChave();
 * @return novoPodquest, a nova Playlist com os apontamentos de memória para o próximo e anterior apontando para NULL
 */
 Podquest llcriaPodquest();
+
+/**
+* @brief adiciona um Podquest na Playlist ordenado pelo ID
+* @param playlist -> Lista de Podquest
+*/
+void llInserePodquest(Playlist* playlist);
