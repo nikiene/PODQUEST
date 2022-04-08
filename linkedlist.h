@@ -76,4 +76,10 @@ Podquest llcriaPodquest();
 * @brief adiciona um Podquest na Playlist ordenado pelo ID
 * @param playlist -> Lista de Podquest
 */
-void llInserePodquest(Playlist* playlist);
+void llInserePodquestOrdenado(Playlist* playlist);
+
+/**
+* @brief adiciona um Podquest no final da Playlist
+* @param playlist -> Lista de Podquest
+*/
+void llInserePodquestFim(Playlist* playlist);

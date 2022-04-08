@@ -130,7 +130,7 @@ Podquest llcriaPodquest() {
 * @brief adiciona um Podquest na Playlist ordenado pelo ID
 * @param playlist -> Lista de Podquest
 */
-void llInserePodquest(Playlist* playlist) {
+void llInserePodquestOrdenado(Playlist* playlist) {
 
 	Podquest novoPodquest = llcriaPodquest();
 	
@@ -163,3 +163,25 @@ void llInserePodquest(Playlist* playlist) {
 		novoPodquest->anterior = aux;
 	}
 }
+
+/**
+* @brief adiciona um Podquest no final da Playlist
+* @param playlist -> Lista de Podquest
+*/
+void llInserePodquestFim(Playlist* playlist) {
+
+	Podquest novoPodquest = llcriaPodquest();
+
+	if (playlist->inicio == NULL)
+	{
+		playlist->inicio = novoPodquest;
+		playlist->fim = novoPodquest;
+
+		return;
+	}
+
+	playlist->fim->proximo = novoPodquest;
+	novoPodquest->anterior = playlist->fim;
+	playlist->fim = novoPodquest;
+}
+
