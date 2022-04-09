@@ -62,6 +62,8 @@ PalavraChave* criaPalavraChave() {
 /**
 * @brief adiciona uma palavra-chave no fim da lista de palavras-chave
 * @param palavrasChave -> Lista de palavras-chave
+* @return 1 -> se mais palavras vão ser inseridas
+* @return 0 -> se mais palavras vão ser inseridas
 */
 int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 
@@ -74,7 +76,7 @@ int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 		palavrasChave->inicio = novaPalavraChave;
 		palavrasChave->fim = novaPalavraChave;
 
-		printf("\nDeseja inserir uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n");
+		printf("\nDeseja inserir uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n\n");
 		scanf_s("%d", &continuar);
 		getchar();
 		
@@ -92,7 +94,7 @@ int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 	novaPalavraChave->anterior = palavrasChave->fim;
 	palavrasChave->fim = novaPalavraChave;
 
-	printf("\nDeseja inserir mais uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n");
+	printf("\nDeseja inserir mais uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n\n");
 	scanf_s("%d", &continuar);
 	getchar();
 
@@ -116,19 +118,21 @@ Podquest criaPodquest() {
 
 	Podquest novoPodquest = (Podquest)malloc(sizeof(Podcast));
 
-	printf("\nId do Podcast: ");
+	printf("Inserindo Podquest:\n");
+
+	printf("\n	Id do Podcast: ");
 	scanf_s("%d", &novoPodquest->podcastId);
 	getchar();
 
-	printf("\nNome do Podcast: ");
+	printf("\n	Nome do Podcast: ");
 	fgets(novoPodquest->nomePodcast, 64, stdin);
 	remove_newline_ch(novoPodquest->nomePodcast);
 
-	printf("\nNome do Episodio: ");
+	printf("\n	Nome do Episodio: ");
 	fgets(novoPodquest->nomeEpisodio, 64, stdin);
 	remove_newline_ch(novoPodquest->nomeEpisodio);
 
-	printf("\nNumero do Episodio: ");
+	printf("\n	Numero do Episodio: ");
 	scanf_s("%d", &novoPodquest->numeroEpisodio);
 	getchar();
 
@@ -284,6 +288,10 @@ void llremovePodquest(Playlist* playlist) {
 	}
 }
 
+/**
+* @brief Função que começa a tocar a playlist
+* @param playlist -> Playlist que vai ser tocada
+*/
 void lltocar(Playlist* playlist) {
 
 	if (playlist->inicio != NULL)
@@ -293,6 +301,10 @@ void lltocar(Playlist* playlist) {
 		printf("\n- Now Playing:");
 		printf("\n- %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
 		printf("\n	- %d - %s", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
+	}
+	else
+	{
+		printf("\nA Playlist esta vazia!\n\n");
 	}
 }
 

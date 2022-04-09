@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-//
+//Função auxiliar que troca '\n' por '\0' (thx @Yarquen! :D)
 void remove_newline_ch(char* line);
 
 //Definição das palavras-chave, cada uma vai ter uma string e um apontamento para uma próxima, caso existir
@@ -70,6 +70,12 @@ PalavrasChave* criaPalavrasChave();
 */
 PalavraChave* criaPalavraChave();
 
+/**
+* @brief adiciona uma palavra-chave no fim da lista de palavras-chave
+* @param palavrasChave -> Lista de palavras-chave
+* @return 1 -> se mais palavras vão ser inseridas
+* @return 0 -> se mais palavras vão ser inseridas
+*/
 int adicionaPalavraChave(PalavrasChave* palavrasChave);
 
 /**
@@ -106,4 +112,8 @@ Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca);
 */
 void llremovePodquest(Playlist* playlist);
 
+/**
+* @brief Função que começa a tocar a playlist
+* @param playlist -> Playlist que vai ser tocada
+*/
 void lltocar(Playlist* playlist);
