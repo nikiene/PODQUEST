@@ -131,3 +131,9 @@ void lltocaProximo(Playlist* playlist, bool shuffle);
 * @param playlist -> Playlist que vai ser tocada
 */
 void lltocaAnterior(Playlist* playlist);
+
+/**
+* @brief Função que imprime os Podquests da Playlist
+* @param playlist -> playlist que vai ser impressa
+*/
+void llrelatorio(Playlist* playlist);

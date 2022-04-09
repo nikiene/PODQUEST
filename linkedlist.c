@@ -361,3 +361,16 @@ void lltocaAnterior(Playlist* playlist) {
 		lltocar(playlist);
 	}
 }
+
+/**
+* @brief Função que imprime os Podquests da Playlist
+* @param playlist -> playlist que vai ser impressa
+*/
+void llrelatorio(Playlist* playlist) {
+
+	if (playlist->inicio != NULL)
+	{
+		//verificar quantos Ids diferentes tem na playlist e printar
+		//+printar os episodias de cada um desses ids sem repetir o nome do podcast
+	}
+}
