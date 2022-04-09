@@ -31,7 +31,7 @@ Playlist* llcriaPlaylist() {
 * @brief Função que aloca um espaço do tamanho de uma lista de PalavraChave na memória 
 * @return novaPalavrasChave, a nova lista de PalavraChave com os apontamentos de memória para o início e fim apontando para NULL
 */
-PalavrasChave* llcriaPalavrasChave() {
+PalavrasChave* criaPalavrasChave() {
 
 	PalavrasChave* novaPalavrasChave = (PalavrasChave*)malloc(sizeof(PalavrasChave));
 
@@ -45,7 +45,7 @@ PalavrasChave* llcriaPalavrasChave() {
 * @brief Função que aloca um espaço do tamanho de uma PalavraChave na memória (dados dessa PalavraChave serão pedidos nessa função)
 * @return novaPalavrasChave, a nova PalavraChave com os apontamentos de memória para o próximo apontando para NULL
 */
-PalavraChave* llcriaPalavraChave() {
+PalavraChave* criaPalavraChave() {
 	
 	PalavraChave* novaPalavraChave = (PalavraChave*)malloc(sizeof(PalavraChave));
 
@@ -63,28 +63,56 @@ PalavraChave* llcriaPalavraChave() {
 * @brief adiciona uma palavra-chave no fim da lista de palavras-chave
 * @param palavrasChave -> Lista de palavras-chave
 */
-void adicionaPalavraChave(PalavrasChave* palavrasChave) {
+int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 
-	PalavraChave* novaPalavraChave = llcriaPalavraChave();
+	int continuar = 0;
+
+	PalavraChave* novaPalavraChave = criaPalavraChave();
 
 	if (palavrasChave->inicio == NULL)
 	{
 		palavrasChave->inicio = novaPalavraChave;
 		palavrasChave->fim = novaPalavraChave;
 
-		return;
+		printf("\nDeseja inserir uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n");
+		scanf_s("%d", &continuar);
+		getchar();
+		
+		if (continuar == 1)
+		{
+			return 1;
+		}
+		else
+		{
+			return 0;
+		}
 	}
 
 	palavrasChave->fim->proxima = novaPalavraChave;
 	novaPalavraChave->anterior = palavrasChave->fim;
 	palavrasChave->fim = novaPalavraChave;
+
+	printf("\nDeseja inserir mais uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n");
+	scanf_s("%d", &continuar);
+	getchar();
+
+	if (continuar == 1)
+	{
+		return 1;
+	}
+	else
+	{
+		return 0;
+	}
+
+	return 0;
 }
 
 /**
 * @brief Função que aloca um espaço do tamanho de um Podquest na memória (dados desse Podquest serão pedidos nessa função)
 * @return novoPodquest, a nova Playlist com os apontamentos de memória para o próximo e anterior apontando para NULL
 */
-Podquest llcriaPodquest() {
+Podquest criaPodquest() {
 
 	Podquest novoPodquest = (Podquest)malloc(sizeof(Podcast));
 
@@ -105,18 +133,17 @@ Podquest llcriaPodquest() {
 	getchar();
 
 
-	PalavrasChave* novaListaPalavrasChave = llcriaPalavrasChave();
+	PalavrasChave* novaListaPalavrasChave = criaPalavrasChave();
 	novoPodquest->palavrasChave = novaListaPalavrasChave;
 
-	int continuar = 1;
+	int continuar = adicionaPalavraChave(novaListaPalavrasChave);
+
 	while (continuar)
 	{
-		printf("\nDeseja inserir mais uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n");
-		scanf_s("%d", &continuar);
-
-		if (continuar)
+		continuar = adicionaPalavraChave(novaListaPalavrasChave);
+		if (continuar == 0)
 		{
-			adicionaPalavraChave(novaListaPalavrasChave);
+			break;
 		}
 	}
 
@@ -132,7 +159,7 @@ Podquest llcriaPodquest() {
 */
 void llInserePodquestOrdenado(Playlist* playlist) {
 
-	Podquest novoPodquest = llcriaPodquest();
+	Podquest novoPodquest = criaPodquest();
 	
 	if (playlist->inicio == NULL)
 	{
@@ -158,6 +185,11 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 			aux = aux->proximo;
 		}
 
+		while (aux->proximo->numeroEpisodio <= novoPodquest->numeroEpisodio)
+		{
+			aux = aux->proximo;
+		}
+
 		novoPodquest->proximo = aux->proximo;
 		aux->proximo = novoPodquest;
 		novoPodquest->anterior = aux;
@@ -170,7 +202,7 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 */
 void llInserePodquestFim(Playlist* playlist) {
 
-	Podquest novoPodquest = llcriaPodquest();
+	Podquest novoPodquest = criaPodquest();
 
 	if (playlist->inicio == NULL)
 	{
@@ -251,3 +283,16 @@ void llremovePodquest(Playlist* playlist) {
 		}
 	}
 }
+
+void lltocar(Playlist* playlist) {
+
+	if (playlist->inicio != NULL)
+	{
+		playlist->atual = playlist->inicio;
+
+		printf("\n- Now Playing:");
+		printf("\n- %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
+		printf("\n	- %d - %s", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
+	}
+}
+
