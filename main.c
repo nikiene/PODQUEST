@@ -17,7 +17,7 @@ int main(int argc, char const* argv[])
 
 	llInserePodquestFim(playlist);
 
-	llproximo(playlist, false);
+	lltocaProximo(playlist, false);
 
 	llInserePodquestFim(playlist);
 
@@ -39,7 +39,7 @@ int main(int argc, char const* argv[])
 
 	llInserePodquestFim(playlist);
 
-	llproximo(playlist, true);
+	lltocaProximo(playlist, true);
 
 	return 0;
 }

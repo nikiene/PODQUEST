@@ -124,4 +124,10 @@ void lltocar(Playlist* playlist);
 * @param playlist -> Playlist que vai ser tocada
 * @param shuffle -> Boolean dizendo se está ligado ou não
 */
-void llproximo(Playlist* playlist, bool shuffle);
+void lltocaProximo(Playlist* playlist, bool shuffle);
+
+/**
+* @brief Função que toca o próximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos próximos Podquests aleatoriamente
+* @param playlist -> Playlist que vai ser tocada
+*/
+void lltocaAnterior(Playlist* playlist);

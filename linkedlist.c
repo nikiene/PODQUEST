@@ -315,31 +315,48 @@ void lltocar(Playlist* playlist) {
 * @param playlist -> Playlist que vai ser tocada
 * @param shuffle -> Boolean dizendo se está ligado ou não
 */
-void llproximo(Playlist* playlist, bool shuffle) {
+void lltocaProximo(Playlist* playlist, bool shuffle) {
 
-	if (shuffle)
+	if (playlist->inicio != NULL)
 	{
-		srand(time(NULL));
-
-		int tamanhoRestante = 0;
-
-		for (Podquest aux = playlist->atual; aux != NULL; aux = aux->proximo)
+		if (shuffle)
 		{
-			tamanhoRestante++;
+			srand(time(NULL));
+
+			int tamanhoRestante = 0;
+
+			for (Podquest aux = playlist->atual; aux != NULL; aux = aux->proximo)
+			{
+				tamanhoRestante++;
+			}
+
+			int aux = rand() % tamanhoRestante + 1;
+
+			for (int i = 0; i < aux; i++)
+			{
+				playlist->atual = playlist->atual->proximo;
+			}
+
+			lltocar(playlist);
 		}
-
-		int aux = rand() % tamanhoRestante + 1;
-
-		for (int i = 0; i < aux; i++)
+		else
 		{
 			playlist->atual = playlist->atual->proximo;
-		}
 
-		lltocar(playlist);
+			lltocar(playlist);
+		}
 	}
-	else
+}
+
+/**
+* @brief Função que toca o próximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos próximos Podquests aleatoriamente
+* @param playlist -> Playlist que vai ser tocada
+*/
+void lltocaAnterior(Playlist* playlist) {
+
+	if (playlist->inicio != NULL)
 	{
-		playlist->atual = playlist->atual->proximo;
+		playlist->atual = playlist->atual->anterior;
 
 		lltocar(playlist);
 	}
