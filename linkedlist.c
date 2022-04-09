@@ -205,3 +205,49 @@ Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca) {
 
 	return NULL;
 }
+
+/**
+* @brief Função que busca um elemento na lista e se o encontrar, o remove
+* @param playlist -> Playlist a qual vai ter o Podquest removido
+*/
+void llremovePodquest(Playlist* playlist) {
+	
+	int idBusca = 0, epsBusca = 0;
+
+	printf("\nInsira o Id do Podquest a ser removido: ");
+	scanf_s("%d", &idBusca);
+
+	printf("\nInsira o numero do episodio a ser removido: ");
+	scanf_s("%d", &epsBusca);
+
+	Podquest buscado = llBuscaPodquest(playlist, idBusca, epsBusca);
+
+	if (buscado != NULL)
+	{
+		if (buscado == playlist->inicio)
+		{
+			Podquest inicioRemovido = playlist->inicio;
+
+			playlist->inicio = playlist->inicio->proximo;
+			playlist->inicio->anterior = NULL;
+
+			free(inicioRemovido);
+		}
+		else if (buscado == playlist->fim)
+		{
+			Podquest fimRemovido = playlist->fim;
+
+			playlist->fim = playlist->fim->anterior;
+			playlist->fim->proximo = NULL;
+
+			free(fimRemovido);
+		}
+		else
+		{
+			buscado->proximo->anterior = buscado->anterior;
+			buscado->anterior->proximo = buscado->proximo;
+
+			free(buscado);
+		}
+	}
+}

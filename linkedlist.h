@@ -93,3 +93,9 @@ void llInserePodquestFim(Playlist* playlist);
 * @return NULL -> Caso o Podquest não exista na lista
 */
 Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca);
+
+/**
+* @brief Função que busca um elemento na lista e se o encontrar, o remove
+* @param playlist -> Playlist a qual vai ter o Podquest removido
+*/
+void llremovePodquest(Playlist* playlist);
