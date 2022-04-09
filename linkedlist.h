@@ -4,6 +4,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 
 //Função auxiliar que troca '\n' por '\0' (thx @Yarquen! :D)
 void remove_newline_ch(char* line);
@@ -117,3 +118,10 @@ void llremovePodquest(Playlist* playlist);
 * @param playlist -> Playlist que vai ser tocada
 */
 void lltocar(Playlist* playlist);
+
+/**
+* @brief Função que toca o próximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos próximos Podquests aleatoriamente
+* @param playlist -> Playlist que vai ser tocada
+* @param shuffle -> Boolean dizendo se está ligado ou não
+*/
+void llproximo(Playlist* playlist, bool shuffle);

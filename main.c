@@ -1,3 +1,4 @@
+#include <time.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -13,6 +14,32 @@ int main(int argc, char const* argv[])
 	llInserePodquestFim(playlist);
 
 	lltocar(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llproximo(playlist, false);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llInserePodquestFim(playlist);
+
+	llproximo(playlist, true);
 
 	return 0;
 }

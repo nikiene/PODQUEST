@@ -168,6 +168,7 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 	if (playlist->inicio == NULL)
 	{
 		playlist->inicio = novoPodquest;
+		playlist->atual = playlist->inicio;
 		playlist->fim = novoPodquest;
 
 		return;
@@ -177,6 +178,7 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 		playlist->fim->proximo = novoPodquest;
 		novoPodquest->anterior = playlist->fim;
 		playlist->fim = novoPodquest;
+		playlist->atual = playlist->inicio;
 
 		return;
 	}
@@ -197,6 +199,7 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 		novoPodquest->proximo = aux->proximo;
 		aux->proximo = novoPodquest;
 		novoPodquest->anterior = aux;
+		playlist->atual = playlist->inicio;
 	}
 }
 
@@ -211,6 +214,7 @@ void llInserePodquestFim(Playlist* playlist) {
 	if (playlist->inicio == NULL)
 	{
 		playlist->inicio = novoPodquest;
+		playlist->atual = playlist->inicio;
 		playlist->fim = novoPodquest;
 
 		return;
@@ -296,11 +300,9 @@ void lltocar(Playlist* playlist) {
 
 	if (playlist->inicio != NULL)
 	{
-		playlist->atual = playlist->inicio;
-
 		printf("\n- Now Playing:");
 		printf("\n- %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
-		printf("\n	- %d - %s", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
+		printf("\n # %d - %s\n\n", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
 	}
 	else
 	{
@@ -308,3 +310,37 @@ void lltocar(Playlist* playlist) {
 	}
 }
 
+/**
+* @brief Função que toca o próximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos próximos Podquests aleatoriamente
+* @param playlist -> Playlist que vai ser tocada
+* @param shuffle -> Boolean dizendo se está ligado ou não
+*/
+void llproximo(Playlist* playlist, bool shuffle) {
+
+	if (shuffle)
+	{
+		srand(time(NULL));
+
+		int tamanhoRestante = 0;
+
+		for (Podquest aux = playlist->atual; aux != NULL; aux = aux->proximo)
+		{
+			tamanhoRestante++;
+		}
+
+		int aux = rand() % tamanhoRestante + 1;
+
+		for (int i = 0; i < aux; i++)
+		{
+			playlist->atual = playlist->atual->proximo;
+		}
+
+		lltocar(playlist);
+	}
+	else
+	{
+		playlist->atual = playlist->atual->proximo;
+
+		lltocar(playlist);
+	}
+}
