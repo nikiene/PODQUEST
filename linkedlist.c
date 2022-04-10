@@ -164,6 +164,22 @@ Podquest criaPodquest() {
 void llInserePodquestOrdenado(Playlist* playlist) {
 
 	Podquest novoPodquest = criaPodquest();
+
+	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
+	{
+		if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
+		{
+			while (true)
+			{
+				novoPodquest->podcastId++;
+
+				if (novoPodquest->podcastId > playlist->fim->podcastId)
+				{
+					break;
+				}
+			}
+		}
+	}
 	
 	if (playlist->inicio == NULL)
 	{
@@ -210,6 +226,22 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 void llInserePodquestFim(Playlist* playlist) {
 
 	Podquest novoPodquest = criaPodquest();
+
+	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
+	{
+		if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
+		{
+			while (true)
+			{
+				novoPodquest->podcastId++;
+		
+				if (novoPodquest->podcastId > playlist->fim->podcastId)
+				{
+					break;
+				}
+			}
+		}
+	}
 
 	if (playlist->inicio == NULL)
 	{
@@ -403,5 +435,9 @@ void llrelatorio(Playlist* playlist) {
 	{
 		//verificar quantos Ids diferentes tem na playlist e printar
 		//+printar os episodias de cada um desses ids sem repetir o nome do podcast
+	}
+	else
+	{
+		printf("\nA Playlist esta vazia!\n\n");
 	}
 }
