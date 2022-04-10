@@ -123,12 +123,6 @@ int adicionaPalavraChave(PalavrasChave* palavrasChave);
 Podquest criaPodquest();
 
 /**
-* @brief adiciona um Podquest na Playlist ordenado pelo ID
-* @param playlist -> Lista de Podquest
-*/
-void llInserePodquestOrdenado(Playlist* playlist);
-
-/**
 * @brief adiciona um Podquest no final da Playlist
 * @param playlist -> Lista de Podquest
 */
@@ -147,8 +141,10 @@ Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca);
 /**
 * @brief Função que busca um elemento na lista e se o encontrar, o remove
 * @param playlist -> Playlist a qual vai ter o Podquest removido
+* @param idBusca -> Id do Podquest que vai ser buscado
+* @param epsBusca -> Episodio do Podquest que vai ser buscado
 */
-void llremovePodquest(Playlist* playlist);
+void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca);
 
 /**
 * @brief Função que começa a tocar a playlist

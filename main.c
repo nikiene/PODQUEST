@@ -45,8 +45,7 @@ int main(int argc, char const* argv[])
 			printf("\n8 - Podquest Anterior");
 			printf("\n9 - Buscar Podquest");
 			printf("\n10 - Adicionar Podquest");
-			printf("\n11 - Adicionar Podquest Ordenado");
-			printf("\n12 - Remover Podquest");
+			printf("\n11 - Remover Podquest");
 
 			printf("\nQual a opcao desejada? ");
 			scanf_s("%d", &option);
@@ -64,6 +63,7 @@ int main(int argc, char const* argv[])
 				playlistAtual = llselecionaPlaylist(listaPlaylists);
 				break;
 			case 3:
+				printf("\n");
 				lladicionaNovaPlaylist(listaPlaylists);
 				break;
 			case 4:
@@ -75,12 +75,12 @@ int main(int argc, char const* argv[])
 			case 6:
 				if (shuffle)
 				{
-					printf("\nDesligando Modo shuffle!");
+					printf("\nDesligando Modo shuffle!\n");
 					shuffle = false;
 				}
 				else
 				{
-					printf("\nLigando Modo shuffle!");
+					printf("\nLigando Modo shuffle!\n");
 					shuffle = true;
 				}
 				break;
@@ -105,10 +105,15 @@ int main(int argc, char const* argv[])
 				llInserePodquestFim(playlistAtual);
 				break;
 			case 11:
-				llInserePodquestOrdenado(playlistAtual);
-				break;
-			case 12:
-				llremovePodquest(playlistAtual);
+				printf("\nInsira o Id do Podquest a ser removido: ");
+				scanf_s("%d", &idBusca);
+				getchar();
+
+				printf("\nInsira o numero do episodio a ser removido: ");
+				scanf_s("%d", &epsBusca);
+				getchar();
+
+				llremovePodquest(playlistAtual, idBusca, epsBusca);
 				break;
 			default:
 				break;
@@ -140,7 +145,7 @@ int main(int argc, char const* argv[])
 		}
 	}
 
-	printf("\n\nOBRIGADO POR USAR O PODQUEST! :)");
+	printf("\n\nOBRIGADO POR USAR O PODQUEST! :)\n\n");
 
 	return 0;
 }
