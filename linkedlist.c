@@ -142,9 +142,14 @@ Podquest criaPodquest() {
 
 	int continuar = adicionaPalavraChave(novaListaPalavrasChave);
 
+	printf("\n");
+
 	while (continuar)
 	{
 		continuar = adicionaPalavraChave(novaListaPalavrasChave);
+
+		printf("\n");
+
 		if (continuar == 0)
 		{
 			break;
@@ -197,21 +202,19 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 	}
 	else
 	{
-		Podquest aux = playlist->inicio;
-
-		while (aux->proximo->podcastId <= novoPodquest->podcastId)
+		while (playlist->inicio->proximo->podcastId <= novoPodquest->podcastId)
 		{
-			aux = aux->proximo;
+			playlist->inicio = playlist->inicio->proximo;
 		}
 
-		while (aux->proximo->numeroEpisodio <= novoPodquest->numeroEpisodio)
+		while (playlist->inicio->proximo->numeroEpisodio <= novoPodquest->numeroEpisodio)
 		{
-			aux = aux->proximo;
+			playlist->inicio = playlist->inicio->proximo;
 		}
 
-		novoPodquest->proximo = aux->proximo;
-		aux->proximo = novoPodquest;
-		novoPodquest->anterior = aux;
+		novoPodquest->proximo = playlist->inicio->proximo;
+		playlist->inicio->proximo = novoPodquest;
+		novoPodquest->anterior = playlist->inicio;
 		playlist->atual = playlist->inicio;
 	}
 }
@@ -331,8 +334,8 @@ void lltocar(Playlist* playlist) {
 	if (playlist->inicio != NULL)
 	{
 		printf("\n- Now Playing:");
-		printf("\n- %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
-		printf("\n # %d - %s\n\n", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
+		printf("\n %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
+		printf("\n	# %d - %s\n\n", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
 	}
 	else
 	{
@@ -368,6 +371,12 @@ void lltocaProximo(Playlist* playlist, bool shuffle) {
 
 				if (antigoAtual != playlist->atual)
 				{
+					//Desfazendo a Lista circular
+					if (playlist->fim->proximo != NULL)
+					{
+						playlist->fim->proximo = NULL;
+					}
+
 					lltocar(playlist);
 					free(antigoAtual);
 					return;
@@ -376,12 +385,6 @@ void lltocaProximo(Playlist* playlist, bool shuffle) {
 		}
 		else
 		{
-			//Desfazendo a Lista circular
-			if (playlist->fim->proximo != NULL)
-			{
-				playlist->fim->proximo = NULL;
-			}
-
 			if (playlist->atual->proximo != NULL)
 			{
 				playlist->atual = playlist->atual->proximo;
@@ -396,8 +399,6 @@ void lltocaProximo(Playlist* playlist, bool shuffle) {
 
 				lltocar(playlist);
 			}
-
-
 		}
 	}
 }
@@ -428,8 +429,57 @@ void llrelatorio(Playlist* playlist) {
 
 	if (playlist->inicio != NULL)
 	{
-		//verificar quantos Ids diferentes tem na playlist e printar
-		//+printar os episodias de cada um desses ids sem repetir o nome do podcast
+		Podquest antigoAtual = playlist->atual;
+
+		int numeroPodcasts = 0;
+		int numeroEpisodios = (int)sizeof(playlist) - 3;
+
+		for (playlist->atual = playlist->inicio; playlist->atual != NULL; playlist->atual = playlist->atual->proximo)
+		{
+			if (playlist->atual->podcastId != numeroPodcasts)
+			{
+				numeroPodcasts++;
+			}
+		}
+		
+		if (numeroPodcasts == 1)
+		{
+			if (numeroEpisodios == 1)
+			{
+				printf("\nSua Playlist possui %d Podcast e %d Episodio:\n", numeroPodcasts, numeroEpisodios);
+			}
+			else
+			{
+				printf("\nSua Playlist possui %d Podcast e %d Episodios:\n", numeroPodcasts, numeroEpisodios);
+			}
+		}
+		else
+		{
+			printf("\nSua Playlist possui %d Podcasts e %d Episodios:\n", numeroPodcasts, numeroEpisodios);
+		}
+		
+
+		for (playlist->atual = playlist->inicio; playlist->atual != NULL; playlist->atual = playlist->atual->proximo)
+		{
+			if (playlist->atual != NULL)
+			{
+				
+				if (playlist->atual == playlist->inicio)
+				{
+					printf("\n %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
+				}
+				else if (playlist->atual->podcastId != playlist->atual->anterior->podcastId)
+				{
+					printf("\n %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
+				}
+
+
+				printf("\n	#%d - %s\n", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
+			}
+		}
+		playlist->atual = antigoAtual;
+
+		free(antigoAtual, numeroPodcasts);
 	}
 	else
 	{
