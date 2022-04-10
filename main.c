@@ -7,7 +7,7 @@
 int main(int argc, char const* argv[]) 
 {
 	Playlists* listaPlaylists = criaPlaylists();
-	Playlist* playlistAtual;
+	Playlist* playlistAtual = NULL;
 
 	printf("                                                                                \n");
 	printf("                            ,,                                                  \n");
@@ -20,14 +20,127 @@ int main(int argc, char const* argv[])
 	printf("  MMbmmd'   `Ybmd9'   `Wbmd\"MML.  `MbmdMM    `Mbod\"YML. `Mbmmd' M9mmmP'   `Mbmo \n");
 	printf("  MM                                   MM                                       \n");
 	printf(".JMML.                               .JMML.                     version 1.0.0 :p\n");
+	printf("                                                                                \n");
 
-	int option = 0;
-	bool running = true;
+	int option = 0, idBusca = 0, epsBusca = 0;
+	bool running = true, shuffle = false;
 
 	while (running)
 	{
+		printf("\n0 - Sair");
+		printf("\n1 - Mostrar Playlists");
+		printf("\n2 - Selecionar Playlist");
 
+		//Cria Playlist e a seleciona automaticamente
+		printf("\n3 - Criar Playlist");
+
+		if (listaPlaylists->inicio != NULL && playlistAtual != NULL)
+		{
+			printf("\n\nPlaylist Selecionada: %s\n", playlistAtual->nomePlaylist);
+
+			printf("\n4 - Relatorio da Playlist");
+			printf("\n5 - Tocar Playlist");
+			printf("\n6 - Modo shuffle");
+			printf("\n7 - Proximo Podquest");
+			printf("\n8 - Podquest Anterior");
+			printf("\n9 - Buscar Podquest");
+			printf("\n10 - Adicionar Podquest");
+			printf("\n11 - Adicionar Podquest Ordenado");
+			printf("\n12 - Remover Podquest");
+
+			printf("\nQual a opcao desejada? ");
+			scanf_s("%d", &option);
+			getchar();
+
+			switch (option)
+			{
+			case 0:
+				running = false;
+				break;
+			case 1:
+				llmostraPlaylists(listaPlaylists);
+				break;
+			case 2:
+				playlistAtual = llselecionaPlaylist(listaPlaylists);
+				break;
+			case 3:
+				lladicionaNovaPlaylist(listaPlaylists);
+				break;
+			case 4:
+				llrelatorio(playlistAtual);
+				break;
+			case 5:
+				lltocar(playlistAtual);
+				break;
+			case 6:
+				if (shuffle)
+				{
+					printf("\nDesligando Modo shuffle!");
+					shuffle = false;
+				}
+				else
+				{
+					printf("\nLigando Modo shuffle!");
+					shuffle = true;
+				}
+				break;
+			case 7:
+				lltocaProximo(playlistAtual, shuffle);
+				break;
+			case 8:
+				lltocaAnterior(playlistAtual);
+				break;
+			case 9:
+				printf("\nInsira o Id do Podquest a ser buscado: ");
+				scanf_s("%d", &idBusca);
+				getchar();
+
+				printf("\nInsira o numero do episodio a ser buscado: ");
+				scanf_s("%d", &epsBusca);
+				getchar();
+
+				llBuscaPodquest(playlistAtual, idBusca, epsBusca);
+				break;
+			case 10:
+				llInserePodquestFim(playlistAtual);
+				break;
+			case 11:
+				llInserePodquestOrdenado(playlistAtual);
+				break;
+			case 12:
+				llremovePodquest(playlistAtual);
+				break;
+			default:
+				break;
+			}
+		}
+		else
+		{
+			printf("\nQual a opcao desejada? ");
+			scanf_s("%d", &option);
+			getchar();
+
+			switch (option)
+			{
+			case 0:
+				running = false;
+				break;
+			case 1:
+				llmostraPlaylists(listaPlaylists);
+				break;
+			case 2:
+				playlistAtual = llselecionaPlaylist(listaPlaylists);
+				break;
+			case 3:
+				lladicionaNovaPlaylist(listaPlaylists);
+				break;
+			default:
+				break;
+			}
+		}
 	}
+
+	printf("\n\nOBRIGADO POR USAR O PODQUEST! :)");
 
 	return 0;
 }

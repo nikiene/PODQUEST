@@ -15,7 +15,7 @@ void remove_newline_ch(char* line) {
 * @brief Função que aloca um espaço do tamanho de uma Playlist na memória
 * @return novaPlaylist, a nova Playlist com os apontamentos de memória para o início, fim e atual apontando para NULL
 */
-Playlist* llcriaPlaylist() {
+Playlist* criaPlaylist() {
 
 	Playlist* novaPlaylist = (Playlist*)malloc(sizeof(Playlist));
 
@@ -46,12 +46,70 @@ Playlists* criaPlaylists() {
 }
 
 /**
+* @brief Função que mostra as Playlists na lista de Playlists
+* @param playlists -> lista de Playlists
+*/
+void llmostraPlaylists(Playlists* playlists) {
+	
+	if (playlists->inicio != NULL)
+	{
+		int temp = 0;
+		for (Playlist* aux = playlists->inicio; aux != NULL; aux = aux->proxima)
+		{
+			temp++;
+			printf("\n%d. %s", temp, aux->nomePlaylist);
+		}
+	}
+	else
+	{
+		printf("\nSem playlists!\n\n");
+	}
+}
+
+/**
+* @brief Função que mostra as Playlists na lista de Playlists e pede ao usuário selecionar uma
+* @param playlists -> lista de Playlists
+* @return aux -> Playlist selecionada
+*/
+Playlist* llselecionaPlaylist(Playlists* playlists) {
+
+	if (playlists->inicio != NULL)
+	{
+		while (true)
+		{
+			llmostraPlaylists(playlists);
+
+			int escolha = 0;
+
+			printf("\nQual a Playlist desejada? ");
+			scanf_s("%d", &escolha);
+			getchar();
+
+			int temp = 0;
+			Playlist* aux = playlists->inicio;
+			for (aux; aux != NULL; aux = aux->proxima)
+			{
+				temp++;
+				if (temp == escolha)
+				{
+					return aux;
+				}
+			}
+		}
+	}
+	else
+	{
+		printf("\nSem playlists!\n\n");
+	}
+}
+
+/**
 * @brief Função que adiciona uma Playlist na lista de Playlists
 * @param playlists -> lista de Playlists
 */
-void adicionaNovaPlaylist(Playlists* playlists) {
+void lladicionaNovaPlaylist(Playlists* playlists) {
 
-	Playlist* playlist = llcriaPlaylist();
+	Playlist* playlist = criaPlaylist();
 
 	if (playlists->inicio = NULL)
 	{
@@ -63,6 +121,8 @@ void adicionaNovaPlaylist(Playlists* playlists) {
 		playlist->proxima = playlists->inicio;
 		playlists->inicio = playlist;
 	}
+
+	printf("\n");
 }
 
 
@@ -325,9 +385,11 @@ void llremovePodquest(Playlist* playlist) {
 
 	printf("\nInsira o Id do Podquest a ser removido: ");
 	scanf_s("%d", &idBusca);
+	getchar();
 
 	printf("\nInsira o numero do episodio a ser removido: ");
 	scanf_s("%d", &epsBusca);
+	getchar();
 
 	Podquest buscado = llBuscaPodquest(playlist, idBusca, epsBusca);
 
