@@ -2,7 +2,7 @@
 EP-1 | Estrutura de Dados - 3° Semestre -  Bacharelado em Ciência da Computação - Senac Santo Amaro
 
 <div align="center">
- <img src=https://user-images.githubusercontent.com/80795579/162632392-cb589da3-7ccd-4ca7-b2a7-a3158e4f29d4.png>
+ <img src=https://user-images.githubusercontent.com/80795579/162638556-fd3be2da-ce38-4799-b439-e16d6413aef8.png>
 </div>
 
 # 1. **PODQUEST MVP**
