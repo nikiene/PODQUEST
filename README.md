@@ -1,6 +1,10 @@
 # **PODQUEST**
 EP-1 | Estrutura de Dados - 3° Semestre -  Bacharelado em Ciência da Computação - Senac Santo Amaro
 
+<div align="center">
+ <img src=https://user-images.githubusercontent.com/80795579/162632392-cb589da3-7ccd-4ca7-b2a7-a3158e4f29d4.png>
+</div>
+
 # 1. **PODQUEST MVP**
 
   * Quero poder inserir um novo podcast na minha playlist, para depois poder verificar quais são os episódios de podcasts que tenho
