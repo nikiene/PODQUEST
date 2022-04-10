@@ -27,6 +27,8 @@ int main(int argc, char const* argv[])
 
 	while (running)
 	{
+		printf("\n________________________________________________________________________________\n");
+		
 		printf("\n0 - Sair");
 		printf("\n1 - Mostrar Playlists");
 		printf("\n2 - Selecionar Playlist");
@@ -46,6 +48,8 @@ int main(int argc, char const* argv[])
 			printf("\n9 - Buscar Podquest");
 			printf("\n10 - Adicionar Podquest");
 			printf("\n11 - Remover Podquest");
+			
+			printf("\n________________________________________________________________________________\n");
 
 			printf("\nQual a opcao desejada? ");
 			scanf_s("%d", &option);
@@ -121,6 +125,8 @@ int main(int argc, char const* argv[])
 		}
 		else
 		{
+			printf("\n________________________________________________________________________________\n");
+			
 			printf("\nQual a opcao desejada? ");
 			scanf_s("%d", &option);
 			getchar();
