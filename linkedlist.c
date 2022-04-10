@@ -403,7 +403,7 @@ void lltocar(Playlist* playlist) {
 	{
 		printf("\n- Now Playing:");
 		printf("\n %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
-		printf("\n	# %d - %s\n\n", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
+		printf("\n	# %d - %s\n", playlist->atual->numeroEpisodio, playlist->atual->nomeEpisodio);
 	}
 	else
 	{
