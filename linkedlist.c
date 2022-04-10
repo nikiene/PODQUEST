@@ -50,7 +50,7 @@ Playlists* criaPlaylists() {
 * @param playlists -> lista de Playlists
 */
 void llmostraPlaylists(Playlists* playlists) {
-	
+
 	if (playlists->inicio != NULL)
 	{
 		int temp = 0;
@@ -83,7 +83,7 @@ Playlist* llselecionaPlaylist(Playlists* playlists) {
 			int escolha = 0;
 
 			printf("\nQual a Playlist desejada? (id) ");
-			scanf_s("%d", &escolha);
+			scanf("%d", &escolha);
 			getchar();
 
 			int temp = 0;
@@ -126,7 +126,7 @@ void lladicionaNovaPlaylist(Playlists* playlists) {
 
 
 /**
-* @brief Função que aloca um espaço do tamanho de uma lista de PalavraChave na memória 
+* @brief Função que aloca um espaço do tamanho de uma lista de PalavraChave na memória
 * @return novaPalavrasChave, a nova lista de PalavraChave com os apontamentos de memória para o início e fim apontando para NULL
 */
 PalavrasChave* criaPalavrasChave() {
@@ -144,7 +144,7 @@ PalavrasChave* criaPalavrasChave() {
 * @return novaPalavrasChave, a nova PalavraChave com os apontamentos de memória para o próximo apontando para NULL
 */
 PalavraChave* criaPalavraChave() {
-	
+
 	PalavraChave* novaPalavraChave = (PalavraChave*)malloc(sizeof(PalavraChave));
 
 	printf("\nPalavra-chave: ");
@@ -175,9 +175,9 @@ int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 		palavrasChave->fim = novaPalavraChave;
 
 		printf("\nDeseja inserir uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n\n");
-		scanf_s("%d", &continuar);
+		scanf("%d", &continuar);
 		getchar();
-		
+
 		if (continuar == 1)
 		{
 			return 1;
@@ -193,7 +193,7 @@ int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 	palavrasChave->fim = novaPalavraChave;
 
 	printf("\nDeseja inserir mais uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n\n");
-	scanf_s("%d", &continuar);
+	scanf("%d", &continuar);
 	getchar();
 
 	if (continuar == 1)
@@ -219,7 +219,7 @@ Podquest criaPodquest() {
 	printf("\nInserindo Podquest:\n");
 
 	printf("\n	Id do Podcast: ");
-	scanf_s("%d", &novoPodquest->podcastId);
+	scanf("%d", &novoPodquest->podcastId);
 	getchar();
 
 	printf("\n	Nome do Podcast: ");
@@ -231,7 +231,7 @@ Podquest criaPodquest() {
 	remove_newline_ch(novoPodquest->nomeEpisodio);
 
 	printf("\n	Numero do Episodio: ");
-	scanf_s("%d", &novoPodquest->numeroEpisodio);
+	scanf("%d", &novoPodquest->numeroEpisodio);
 	getchar();
 
 
@@ -269,14 +269,14 @@ void llInserePodquestFim(Playlist* playlist) {
 		while (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
 		{
 			novoPodquest->podcastId++;
-		
+
 			if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) == 0 || novoPodquest->podcastId > playlist->fim->podcastId)
 			{
 				break;
 			}
 		}
 	}
-	
+
 
 	if (playlist->inicio == NULL)
 	{
@@ -304,7 +304,7 @@ Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca) {
 
 	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
 	{
-		if (aux->podcastId == idBusca && aux->numeroEpisodio == epsBusca) 
+		if (aux->podcastId == idBusca && aux->numeroEpisodio == epsBusca)
 		{
 			printf("\nPodquest encontrado!\n");
 			return aux;
@@ -329,36 +329,46 @@ void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca) {
 	{
 		if (buscado == playlist->inicio)
 		{
-			if (playlist->inicio != NULL)
+
+			Podquest inicioRemovido = playlist->inicio;
+
+			if (playlist->inicio->proximo != NULL)
 			{
-				Podquest inicioRemovido = playlist->inicio;
-
-				if (playlist->inicio->proximo != NULL)
-				{
-					playlist->inicio = playlist->inicio->proximo;
-				}
-
-				if (playlist->inicio->anterior != NULL)
-				{
-					playlist->inicio->anterior = NULL;
-				}
-
-				free(inicioRemovido);
-				return;
+				playlist->inicio = playlist->inicio->proximo;
+				playlist->inicio->anterior = NULL;
 			}
+			else
+			{
+				playlist->inicio = NULL;
+				playlist->fim = NULL;
+			}
+
+			free(inicioRemovido);
+			return;
 		}
 		else if (buscado == playlist->fim)
 		{
-			if (playlist->inicio != NULL)
-			{
-				Podquest fimRemovido = playlist->fim;
 
+			Podquest fimRemovido = playlist->fim;
+
+			if (playlist->fim->anterior != NULL)
+			{
 				playlist->fim = playlist->fim->anterior;
 				playlist->fim->proximo = NULL;
-
-				free(fimRemovido);
-				return;
 			}
+			else {
+				if (playlist->inicio != NULL)
+				{
+					playlist->fim = playlist->inicio;
+				}
+				else
+				{
+					playlist->fim = NULL;
+				}
+			}
+
+			free(fimRemovido);
+			return;
 		}
 		else
 		{
@@ -496,7 +506,7 @@ void llrelatorio(Playlist* playlist) {
 				numeroPodcasts++;
 			}
 		}
-		
+
 		if (numeroPodcasts == 1)
 		{
 			if (numeroEpisodios == 1)
@@ -512,13 +522,13 @@ void llrelatorio(Playlist* playlist) {
 		{
 			printf("\nSua Playlist possui %d Podcasts e %d Episodios:\n", numeroPodcasts, numeroEpisodios);
 		}
-		
+
 
 		for (playlist->atual = playlist->inicio; playlist->atual != NULL; playlist->atual = playlist->atual->proximo)
 		{
 			if (playlist->atual != NULL)
 			{
-				
+
 				if (playlist->atual == playlist->inicio)
 				{
 					printf("\n %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
