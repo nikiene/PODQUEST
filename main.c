@@ -52,7 +52,7 @@ int main(int argc, char const* argv[])
 			printf("\n________________________________________________________________________________\n");
 
 			printf("\nQual a opcao desejada? ");
-			scanf_s("%d", &option);
+			scanf("%d", &option);
 			getchar();
 
 			switch (option)
@@ -96,11 +96,11 @@ int main(int argc, char const* argv[])
 				break;
 			case 9:
 				printf("\nInsira o Id do Podquest a ser buscado: ");
-				scanf_s("%d", &idBusca);
+				scanf("%d", &idBusca);
 				getchar();
 
 				printf("\nInsira o numero do episodio a ser buscado: ");
-				scanf_s("%d", &epsBusca);
+				scanf("%d", &epsBusca);
 				getchar();
 
 				llBuscaPodquest(playlistAtual, idBusca, epsBusca);
@@ -110,11 +110,11 @@ int main(int argc, char const* argv[])
 				break;
 			case 11:
 				printf("\nInsira o Id do Podquest a ser removido: ");
-				scanf_s("%d", &idBusca);
+				scanf("%d", &idBusca);
 				getchar();
 
 				printf("\nInsira o numero do episodio a ser removido: ");
-				scanf_s("%d", &epsBusca);
+				scanf("%d", &epsBusca);
 				getchar();
 
 				llremovePodquest(playlistAtual, idBusca, epsBusca);
@@ -128,7 +128,7 @@ int main(int argc, char const* argv[])
 			printf("\n________________________________________________________________________________\n");
 			
 			printf("\nQual a opcao desejada? ");
-			scanf_s("%d", &option);
+			scanf("%d", &option);
 			getchar();
 
 			switch (option)
