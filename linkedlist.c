@@ -2,7 +2,7 @@
 
 #include "linkedlist.h"
 
-//Função auxiliar que troca '\n' por '\0' (thx @Yarquen! :D)
+//FunÃ§Ã£o auxiliar que troca '\n' por '\0' (thx @Yarquen! :D)
 void remove_newline_ch(char* line) {
 	int new_line = strlen(line) - 1;
 	if (line[new_line] == '\n')
@@ -12,8 +12,8 @@ void remove_newline_ch(char* line) {
 }
 
 /**
-* @brief Função que aloca um espaço do tamanho de uma Playlist na memória
-* @return novaPlaylist, a nova Playlist com os apontamentos de memória para o início, fim e atual apontando para NULL
+* @brief FunÃ§Ã£o que aloca um espaÃ§o do tamanho de uma Playlist na memÃ³ria
+* @return novaPlaylist, a nova Playlist com os apontamentos de memÃ³ria para o inÃ­cio, fim e atual apontando para NULL
 */
 Playlist* criaPlaylist() {
 
@@ -32,8 +32,8 @@ Playlist* criaPlaylist() {
 }
 
 /**
-* @brief Função que aloca um espaço do tamanho de uma Lista de Playlist na memória
-* @return novasPlaylists, a nova Lista de Playlist com os apontamentos de memória para o início e próxima apontando para NULL
+* @brief FunÃ§Ã£o que aloca um espaÃ§o do tamanho de uma Lista de Playlist na memÃ³ria
+* @return novasPlaylists, a nova Lista de Playlist com os apontamentos de memÃ³ria para o inÃ­cio e prÃ³xima apontando para NULL
 */
 Playlists* criaPlaylists() {
 
@@ -46,11 +46,11 @@ Playlists* criaPlaylists() {
 }
 
 /**
-* @brief Função que mostra as Playlists na lista de Playlists
+* @brief FunÃ§Ã£o que mostra as Playlists na lista de Playlists
 * @param playlists -> lista de Playlists
 */
 void llmostraPlaylists(Playlists* playlists) {
-
+	
 	if (playlists->inicio != NULL)
 	{
 		int temp = 0;
@@ -68,7 +68,7 @@ void llmostraPlaylists(Playlists* playlists) {
 }
 
 /**
-* @brief Função que mostra as Playlists na lista de Playlists e pede ao usuário selecionar uma
+* @brief FunÃ§Ã£o que mostra as Playlists na lista de Playlists e pede ao usuÃ¡rio selecionar uma
 * @param playlists -> lista de Playlists
 * @return aux -> Playlist selecionada
 */
@@ -105,7 +105,7 @@ Playlist* llselecionaPlaylist(Playlists* playlists) {
 }
 
 /**
-* @brief Função que adiciona uma Playlist na lista de Playlists
+* @brief FunÃ§Ã£o que adiciona uma Playlist na lista de Playlists
 * @param playlists -> lista de Playlists
 */
 void lladicionaNovaPlaylist(Playlists* playlists) {
@@ -126,8 +126,8 @@ void lladicionaNovaPlaylist(Playlists* playlists) {
 
 
 /**
-* @brief Função que aloca um espaço do tamanho de uma lista de PalavraChave na memória
-* @return novaPalavrasChave, a nova lista de PalavraChave com os apontamentos de memória para o início e fim apontando para NULL
+* @brief FunÃ§Ã£o que aloca um espaÃ§o do tamanho de uma lista de PalavraChave na memÃ³ria 
+* @return novaPalavrasChave, a nova lista de PalavraChave com os apontamentos de memÃ³ria para o inÃ­cio e fim apontando para NULL
 */
 PalavrasChave* criaPalavrasChave() {
 
@@ -140,11 +140,11 @@ PalavrasChave* criaPalavrasChave() {
 }
 
 /**
-* @brief Função que aloca um espaço do tamanho de uma PalavraChave na memória (dados dessa PalavraChave serão pedidos nessa função)
-* @return novaPalavrasChave, a nova PalavraChave com os apontamentos de memória para o próximo apontando para NULL
+* @brief FunÃ§Ã£o que aloca um espaÃ§o do tamanho de uma PalavraChave na memÃ³ria (dados dessa PalavraChave serÃ£o pedidos nessa funÃ§Ã£o)
+* @return novaPalavrasChave, a nova PalavraChave com os apontamentos de memÃ³ria para o prÃ³ximo apontando para NULL
 */
 PalavraChave* criaPalavraChave() {
-
+	
 	PalavraChave* novaPalavraChave = (PalavraChave*)malloc(sizeof(PalavraChave));
 
 	printf("\nPalavra-chave: ");
@@ -160,8 +160,8 @@ PalavraChave* criaPalavraChave() {
 /**
 * @brief adiciona uma palavra-chave no fim da lista de palavras-chave
 * @param palavrasChave -> Lista de palavras-chave
-* @return 1 -> se mais palavras vão ser inseridas
-* @return 0 -> se mais palavras vão ser inseridas
+* @return 1 -> se mais palavras vÃ£o ser inseridas
+* @return 0 -> se mais palavras vÃ£o ser inseridas
 */
 int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 
@@ -177,7 +177,7 @@ int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 		printf("\nDeseja inserir uma palavra-chave para esse podquest? \n| 1 - Sim  \n| 0 - Nao\n\n");
 		scanf("%d", &continuar);
 		getchar();
-
+		
 		if (continuar == 1)
 		{
 			return 1;
@@ -209,8 +209,8 @@ int adicionaPalavraChave(PalavrasChave* palavrasChave) {
 }
 
 /**
-* @brief Função que aloca um espaço do tamanho de um Podquest na memória (dados desse Podquest serão pedidos nessa função)
-* @return novoPodquest, a nova Playlist com os apontamentos de memória para o próximo e anterior apontando para NULL
+* @brief FunÃ§Ã£o que aloca um espaÃ§o do tamanho de um Podquest na memÃ³ria (dados desse Podquest serÃ£o pedidos nessa funÃ§Ã£o)
+* @return novoPodquest, a nova Playlist com os apontamentos de memÃ³ria para o prÃ³ximo e anterior apontando para NULL
 */
 Podquest criaPodquest() {
 
@@ -269,7 +269,7 @@ void llInserePodquestFim(Playlist* playlist) {
 		while (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
 		{
 			novoPodquest->podcastId++;
-
+		
 			if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) == 0 || novoPodquest->podcastId > playlist->fim->podcastId)
 			{
 				break;
@@ -277,6 +277,18 @@ void llInserePodquestFim(Playlist* playlist) {
 		}
 	}
 
+  	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
+	{
+		while (aux->numeroEpisodio == novoPodquest->numeroEpisodio && strcmp(aux->nomeEpisodio, novoPodquest->nomeEpisodio) != 0)
+		{
+			novoPodquest->podcastId++;
+		
+			if (aux->numeroEpisodio == novoPodquest->numeroEpisodio && strcmp(aux->nomeEpisodio, novoPodquest->nomeEpisodio) == 0 || novoPodquest->numeroEpisodio > playlist->fim->numeroEpisodio)
+			{
+				break;
+			}
+		}
+	}
 
 	if (playlist->inicio == NULL)
 	{
@@ -293,18 +305,18 @@ void llInserePodquestFim(Playlist* playlist) {
 }
 
 /**
-* @brief Função que verifica se um Podquest existe na Playlist, e caso exista, o retorna
+* @brief FunÃ§Ã£o que verifica se um Podquest existe na Playlist, e caso exista, o retorna
 * @param playlist -> Playlist na qual vai acontecer a busca
 * @param idBusca -> Id do Podquest que vai ser buscado
 * @param epsBusca -> Episodio do Podquest que vai ser buscado
 * @return aux -> O Podquest buscaso
-* @return NULL -> Caso o Podquest não exista na lista
+* @return NULL -> Caso o Podquest nÃ£o exista na lista
 */
 Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca) {
 
 	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
 	{
-		if (aux->podcastId == idBusca && aux->numeroEpisodio == epsBusca)
+		if (aux->podcastId == idBusca && aux->numeroEpisodio == epsBusca) 
 		{
 			printf("\nPodquest encontrado!\n");
 			return aux;
@@ -316,7 +328,7 @@ Podquest llBuscaPodquest(Playlist* playlist, int idBusca, int epsBusca) {
 }
 
 /**
-* @brief Função que busca um elemento na lista e se o encontrar, o remove
+* @brief FunÃ§Ã£o que busca um elemento na lista e se o encontrar, o remove
 * @param playlist -> Playlist a qual vai ter o Podquest removido
 * @param idBusca -> Id do Podquest que vai ser buscado
 * @param epsBusca -> Episodio do Podquest que vai ser buscado
@@ -329,19 +341,19 @@ void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca) {
 	{
 		if (buscado == playlist->inicio)
 		{
-
+			
 			Podquest inicioRemovido = playlist->inicio;
 
-			if (playlist->inicio->proximo != NULL)
-			{
-				playlist->inicio = playlist->inicio->proximo;
-				playlist->inicio->anterior = NULL;
-			}
-			else
-			{
-				playlist->inicio = NULL;
-				playlist->fim = NULL;
-			}
+      if(playlist->inicio->proximo != NULL) 
+      {
+        playlist->inicio = playlist->inicio->proximo;
+			  playlist->inicio->anterior = NULL;
+      } 
+      else
+      {
+        playlist->inicio = NULL;
+        playlist->fim = NULL;
+      }
 
 			free(inicioRemovido);
 			return;
@@ -351,22 +363,22 @@ void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca) {
 
 			Podquest fimRemovido = playlist->fim;
 
-			if (playlist->fim->anterior != NULL)
-			{
-				playlist->fim = playlist->fim->anterior;
-				playlist->fim->proximo = NULL;
-			}
-			else {
-				if (playlist->inicio != NULL)
-				{
-					playlist->fim = playlist->inicio;
-				}
-				else
-				{
-					playlist->fim = NULL;
-				}
-			}
-
+      if(playlist->fim->anterior != NULL)
+      {
+        playlist->fim = playlist->fim->anterior;
+			  playlist->fim->proximo = NULL;
+      }
+      else {
+        if(playlist->inicio != NULL)
+        {
+          playlist->fim = playlist->inicio;
+        } 
+        else
+        {
+          playlist->fim = NULL;
+        }
+      }
+      
 			free(fimRemovido);
 			return;
 		}
@@ -375,14 +387,14 @@ void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca) {
 			buscado->proximo->anterior = buscado->anterior;
 			buscado->anterior->proximo = buscado->proximo;
 
-			free(buscado);
+      free(buscado);
 			return;
 		}
 	}
 }
 
 /**
-* @brief Função que começa a tocar a playlist
+* @brief FunÃ§Ã£o que comeÃ§a a tocar a playlist
 * @param playlist -> Playlist que vai ser tocada
 */
 void lltocar(Playlist* playlist) {
@@ -400,9 +412,9 @@ void lltocar(Playlist* playlist) {
 }
 
 /**
-* @brief Função que toca o próximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos próximos Podquests aleatoriamente
+* @brief FunÃ§Ã£o que toca o prÃ³ximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos prÃ³ximos Podquests aleatoriamente
 * @param playlist -> Playlist que vai ser tocada
-* @param shuffle -> Boolean dizendo se está ligado ou não
+* @param shuffle -> Boolean dizendo se estÃ¡ ligado ou nÃ£o
 */
 void lltocaProximo(Playlist* playlist, bool shuffle) {
 
@@ -464,7 +476,7 @@ void lltocaProximo(Playlist* playlist, bool shuffle) {
 }
 
 /**
-* @brief Função que toca o próximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos próximos Podquests aleatoriamente
+* @brief FunÃ§Ã£o que toca o prÃ³ximo Podquest da PLaylist, caso o shuffle esteja ligado, toca um dos prÃ³ximos Podquests aleatoriamente
 * @param playlist -> Playlist que vai ser tocada
 */
 void lltocaAnterior(Playlist* playlist) {
@@ -482,7 +494,7 @@ void lltocaAnterior(Playlist* playlist) {
 }
 
 /**
-* @brief Função que imprime os Podquests da Playlist
+* @brief FunÃ§Ã£o que imprime os Podquests da Playlist
 * @param playlist -> playlist que vai ser impressa
 */
 void llrelatorio(Playlist* playlist) {
@@ -506,7 +518,7 @@ void llrelatorio(Playlist* playlist) {
 				numeroPodcasts++;
 			}
 		}
-
+		
 		if (numeroPodcasts == 1)
 		{
 			if (numeroEpisodios == 1)
@@ -522,13 +534,13 @@ void llrelatorio(Playlist* playlist) {
 		{
 			printf("\nSua Playlist possui %d Podcasts e %d Episodios:\n", numeroPodcasts, numeroEpisodios);
 		}
-
+		
 
 		for (playlist->atual = playlist->inicio; playlist->atual != NULL; playlist->atual = playlist->atual->proximo)
 		{
 			if (playlist->atual != NULL)
 			{
-
+				
 				if (playlist->atual == playlist->inicio)
 				{
 					printf("\n %d. %s", playlist->atual->podcastId, playlist->atual->nomePodcast);
