@@ -167,16 +167,13 @@ void llInserePodquestOrdenado(Playlist* playlist) {
 
 	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
 	{
-		if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
+		while (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
 		{
-			while (true)
-			{
-				novoPodquest->podcastId++;
+			novoPodquest->podcastId++;
 
-				if (novoPodquest->podcastId > playlist->fim->podcastId)
-				{
-					break;
-				}
+			if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) == 0 || novoPodquest->podcastId > playlist->fim->podcastId)
+			{
+				break;
 			}
 		}
 	}
@@ -229,19 +226,17 @@ void llInserePodquestFim(Playlist* playlist) {
 
 	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
 	{
-		if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
+		while (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) != 0)
 		{
-			while (true)
-			{
-				novoPodquest->podcastId++;
+			novoPodquest->podcastId++;
 		
-				if (novoPodquest->podcastId > playlist->fim->podcastId)
-				{
-					break;
-				}
+			if (aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) == 0 || novoPodquest->podcastId > playlist->fim->podcastId)
+			{
+				break;
 			}
 		}
 	}
+	
 
 	if (playlist->inicio == NULL)
 	{
