@@ -19,11 +19,50 @@ Playlist* llcriaPlaylist() {
 
 	Playlist* novaPlaylist = (Playlist*)malloc(sizeof(Playlist));
 
+	printf("\nNome da Playlist: ");
+	fgets(novaPlaylist->nomePlaylist, 64, stdin);
+	remove_newline_ch(novaPlaylist->nomePlaylist);
+
 	novaPlaylist->inicio = NULL;
 	novaPlaylist->atual = NULL;
 	novaPlaylist->fim = NULL;
+	novaPlaylist->proxima = NULL;
 
 	return novaPlaylist;
+}
+
+/**
+* @brief Função que aloca um espaço do tamanho de uma Lista de Playlist na memória
+* @return novasPlaylists, a nova Lista de Playlist com os apontamentos de memória para o início e próxima apontando para NULL
+*/
+Playlists* criaPlaylists() {
+
+	Playlists* novasPlaylists = (Playlists*)malloc(sizeof(Playlists));
+
+	novasPlaylists->inicio = NULL;
+	novasPlaylists->fim = NULL;
+
+	return novasPlaylists;
+}
+
+/**
+* @brief Função que adiciona uma Playlist na lista de Playlists
+* @param playlists -> lista de Playlists
+*/
+void adicionaNovaPlaylist(Playlists* playlists) {
+
+	Playlist* playlist = llcriaPlaylist();
+
+	if (playlists->inicio = NULL)
+	{
+		playlists->inicio = playlist;
+		playlists->fim = playlist;
+	}
+	else
+	{
+		playlist->proxima = playlists->inicio;
+		playlists->inicio = playlist;
+	}
 }
 
 

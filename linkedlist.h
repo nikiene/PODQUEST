@@ -47,17 +47,41 @@ typedef Podcast* Podquest;
 //Definição da minha lista, possuindo 3 ponteiros: início, atual e fim
 typedef struct playlist
 {
+	char nomePlaylist[64];
+
 	Podquest inicio;
 	Podquest atual;
 	Podquest fim;
+
+	struct playlist* proxima;
 	
 } Playlist;
+
+//Lista de Playlists
+typedef struct playlists
+{
+	Playlist* inicio;
+	Playlist* fim;
+
+}Playlists;
 
 /**
 * @brief Função que aloca um espaço do tamanho de uma Playlist na memória
 * @return novaPlaylist, a nova Playlist com os apontamentos de memória para o início, fim e atual apontando para NULL
 */
 Playlist* llcriaPlaylist();
+
+/**
+* @brief Função que aloca um espaço do tamanho de uma Lista de Playlist na memória
+* @return novasPlaylists, a nova Lista de Playlist com os apontamentos de memória para o início e próxima apontando para NULL
+*/
+Playlists* criaPlaylists();
+
+/**
+* @brief Função que adiciona uma Playlist na lista de Playlists
+* @param playlists -> lista de Playlists
+*/
+void adicionaNovaPlaylist(Playlists* playlists);
 
 /**
 * @brief Função que aloca um espaço do tamanho de uma lista de PalavraChave na memória

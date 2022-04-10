@@ -6,8 +6,7 @@
 
 int main(int argc, char const* argv[]) 
 {
-
-	Playlist* playlist = llcriaPlaylist();
+	Playlists* listaPlaylists = criaPlaylists();
 
 	
 
