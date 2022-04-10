@@ -13,24 +13,6 @@ int main(int argc, char const* argv[])
 
 	llInserePodquestFim(playlist);
 
-	lltocar(playlist);
-
-	llInserePodquestFim(playlist);
-
-	lltocaProximo(playlist, false);
-
-	llInserePodquestFim(playlist);
-
-	llInserePodquestFim(playlist);
-
-	llInserePodquestFim(playlist);
-
-	llInserePodquestFim(playlist);
-
-	llInserePodquestFim(playlist);
-
-	llInserePodquestFim(playlist);
-
 	llInserePodquestFim(playlist);
 
 	llInserePodquestFim(playlist);

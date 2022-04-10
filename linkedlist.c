@@ -272,6 +272,7 @@ void llremovePodquest(Playlist* playlist) {
 			playlist->inicio->anterior = NULL;
 
 			free(inicioRemovido);
+			return;
 		}
 		else if (buscado == playlist->fim)
 		{
@@ -281,6 +282,7 @@ void llremovePodquest(Playlist* playlist) {
 			playlist->fim->proximo = NULL;
 
 			free(fimRemovido);
+			return;
 		}
 		else
 		{
@@ -288,6 +290,7 @@ void llremovePodquest(Playlist* playlist) {
 			buscado->anterior->proximo = buscado->proximo;
 
 			free(buscado);
+			return;
 		}
 	}
 }
@@ -321,29 +324,53 @@ void lltocaProximo(Playlist* playlist, bool shuffle) {
 	{
 		if (shuffle)
 		{
-			srand(time(NULL));
-
-			int tamanhoRestante = 0;
-
-			for (Podquest aux = playlist->atual; aux != NULL; aux = aux->proximo)
+			while (true)
 			{
-				tamanhoRestante++;
+				srand(time(NULL));
+				int aux = rand() % sizeof(playlist) + 1;
+
+				//Transformando a Playlist numa Lista circular
+				playlist->fim->proximo = playlist->inicio;
+
+				Podquest antigoAtual = playlist->atual;
+
+				for (int i = 0; i < aux; i++)
+				{
+					playlist->atual = playlist->atual->proximo;
+				}
+
+				if (antigoAtual != playlist->atual)
+				{
+					lltocar(playlist);
+					free(antigoAtual);
+					return;
+				}
 			}
-
-			int aux = rand() % tamanhoRestante + 1;
-
-			for (int i = 0; i < aux; i++)
-			{
-				playlist->atual = playlist->atual->proximo;
-			}
-
-			lltocar(playlist);
 		}
 		else
 		{
-			playlist->atual = playlist->atual->proximo;
+			//Desfazendo a Lista circular
+			if (playlist->fim->proximo != NULL)
+			{
+				playlist->fim->proximo = NULL;
+			}
 
-			lltocar(playlist);
+			if (playlist->atual->proximo != NULL)
+			{
+				playlist->atual = playlist->atual->proximo;
+
+				lltocar(playlist);
+			}
+			else
+			{
+				printf("\nFim da Playlist! Voltando para o início...\n");
+
+				playlist->atual = playlist->inicio;
+
+				lltocar(playlist);
+			}
+
+
 		}
 	}
 }
@@ -354,10 +381,14 @@ void lltocaProximo(Playlist* playlist, bool shuffle) {
 */
 void lltocaAnterior(Playlist* playlist) {
 
-	if (playlist->inicio != NULL)
+	if (playlist->inicio != NULL && playlist->atual->anterior != NULL)
 	{
 		playlist->atual = playlist->atual->anterior;
 
+		lltocar(playlist);
+	}
+	else
+	{
 		lltocar(playlist);
 	}
 }
