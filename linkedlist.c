@@ -87,8 +87,8 @@ Playlist* llselecionaPlaylist(Playlists* playlists) {
 			getchar();
 
 			int temp = 0;
-			Playlist* aux = playlists->inicio;
-			for (aux; aux != NULL; aux = aux->proxima)
+			Playlist* aux = NULL;
+			for (aux = playlists->inicio; aux != NULL; aux = aux->proxima)
 			{
 				temp++;
 				if (temp == escolha)
@@ -112,7 +112,7 @@ void lladicionaNovaPlaylist(Playlists* playlists) {
 
 	Playlist* playlist = criaPlaylist();
 
-	if (playlists->inicio = NULL)
+	if (playlists->inicio == NULL)
 	{
 		playlists->inicio = playlist;
 		playlists->fim = playlist;
