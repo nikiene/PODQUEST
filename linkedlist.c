@@ -279,11 +279,13 @@ void llInserePodquestFim(Playlist* playlist) {
 
   	for (Podquest aux = playlist->inicio; aux != NULL; aux = aux->proximo)
 	{
-		while (aux->numeroEpisodio == novoPodquest->numeroEpisodio && strcmp(aux->nomeEpisodio, novoPodquest->nomeEpisodio) != 0)
+		while ((aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) == 0) &&
+      (aux->numeroEpisodio == novoPodquest->numeroEpisodio && strcmp(aux->nomeEpisodio, novoPodquest->nomeEpisodio) != 0))
 		{
-			novoPodquest->podcastId++;
+			novoPodquest->numeroEpisodio++;
 		
-			if (aux->numeroEpisodio == novoPodquest->numeroEpisodio && strcmp(aux->nomeEpisodio, novoPodquest->nomeEpisodio) == 0 || novoPodquest->numeroEpisodio > playlist->fim->numeroEpisodio)
+			if ((aux->podcastId == novoPodquest->podcastId && strcmp(aux->nomePodcast, novoPodquest->nomePodcast) == 0) &&
+        (aux->numeroEpisodio == novoPodquest->numeroEpisodio && strcmp(aux->nomeEpisodio, novoPodquest->nomeEpisodio) == 0 || novoPodquest->numeroEpisodio > playlist->fim->numeroEpisodio))
 			{
 				break;
 			}
