@@ -32,8 +32,6 @@ int main(int argc, char const* argv[])
 		printf("\n0 - Sair");
 		printf("\n1 - Mostrar Playlists");
 		printf("\n2 - Selecionar Playlist");
-
-		//Cria Playlist e a seleciona automaticamente
 		printf("\n3 - Criar Playlist");
 
 		if (listaPlaylists->inicio != NULL && playlistAtual != NULL)
