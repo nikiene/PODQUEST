@@ -154,7 +154,7 @@ int main(int argc, char const *argv[]) {
     }
   }
 
-  printf("\n\nOBRIGADO POR USAR O PODQUEST! :)\n\n");
+  printf("\nOBRIGADO POR USAR O PODQUEST! :)\n\n");
 
   free(playlistAtual);
   free(listaPlaylists);
