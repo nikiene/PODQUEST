@@ -355,6 +355,8 @@ void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca) {
         playlist->fim = NULL;
       }
 
+      printf("Podquest removido!");
+
 			free(inicioRemovido);
 			return;
 		}
@@ -378,6 +380,8 @@ void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca) {
           playlist->fim = NULL;
         }
       }
+
+      printf("Podquest removido!");
       
 			free(fimRemovido);
 			return;
@@ -387,6 +391,8 @@ void llremovePodquest(Playlist* playlist, int idBusca, int epsBusca) {
 			buscado->proximo->anterior = buscado->anterior;
 			buscado->anterior->proximo = buscado->proximo;
 
+      printf("Podquest removido!");
+      
       free(buscado);
 			return;
 		}
