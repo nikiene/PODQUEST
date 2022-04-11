@@ -19,7 +19,7 @@ int main(int argc, char const* argv[])
 	printf("  MM   ,AP YA.   ,A9 `Mb    MM   YA.   MM    MM    MM  YM.    , L.   I8   MM    \n");
 	printf("  MMbmmd'   `Ybmd9'   `Wbmd\"MML.  `MbmdMM    `Mbod\"YML. `Mbmmd' M9mmmP'   `Mbmo \n");
 	printf("  MM                                   MM                                       \n");
-	printf(".JMML.                               .JMML.                     version 1.0.0 :p\n");
+	printf(".JMML.                               .JMML.               version 1.0.0 :p      \n");
 	printf("                                                                                \n");
 
 	int option = 0, idBusca = 0, epsBusca = 0;
@@ -151,5 +151,8 @@ int main(int argc, char const* argv[])
 
 	printf("\n\nOBRIGADO POR USAR O PODQUEST! :)\n\n");
 
+  free(playlistAtual);
+  free(listaPlaylists);
+  
 	return 0;
 }
