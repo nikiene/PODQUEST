@@ -419,11 +419,7 @@ void lltocaProximo(Playlist *playlist, bool shuffle) {
         }
 
         if (antigoAtual != playlist->atual) {
-          // Desfazendo a Lista circular
-          if (playlist->fim->proximo != NULL) {
-            playlist->fim->proximo = NULL;
-          }
-
+          
           lltocar(playlist);
           return;
         }
